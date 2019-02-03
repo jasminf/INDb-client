@@ -1,39 +1,73 @@
 import React, {Component} from "react";
-import {searchArtist} from '../apiRequests'
+import PropTypes from "prop-types";
 
 class SearchBox extends Component {
+
+  static propTypes = {
+    onSearchSubmit: PropTypes.func.isRequired,
+    onClearSearchSubmit: PropTypes.func.isRequired,
+  };
+
   state ={
-    artist: null,
-  }
+    searchQuery: '',
+  };
+
   componentDidMount() {
-    searchArtist().then( (artist)=> {
-      setTimeout( ()=> {
-        this.setState({artist});
-      }, 2000);
-    });
+
   }
+
+  get isSearchButtonActive() {
+    const { searchQuery } = this.state;
+    return !!searchQuery;
+  }
+
+  onSearchQueryChanged = (event)=> {
+    const searchQuery = event.target.value;
+    this.setState({searchQuery});
+  };
+
+  onClearSearchButtonClicked = ()=> {
+    const { onClearSearchSubmit } = this.props;
+    this.setState({searchQuery: ''});
+    onClearSearchSubmit();
+  };
+
+  onSearchButtonClicked = ()=> {
+
+    const { onSearchSubmit } = this.props;
+    const { searchQuery } = this.state;
+
+    if (!!searchQuery) {
+      onSearchSubmit(searchQuery)
+    }
+  };
+
   render() {
-    const { artist } = this.state;
     return (
       <div className="search-box">
-        <p>{artist}</p>
         <div className=" card-body mb-4 p-4">
           <h1 className="display-4 text-center">
             <i className="fas fa-music" /> Search Artist
           </h1>
-          <form >
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control form-control-lg"
-                placeholder="Search For A Artist..."
-                name="artistName"
-                value={this.state.artist}
-                onChange={this.onChange}
-              />
-            </div>
-            <button className="btn btn-lg btn-block mb-5" type="submit"> Search</button>
-          </form>
+          <div className="form-group">
+          <input
+            type="text"
+            className="form-control form-control-lg"
+            placeholder="Search For A Artist..."
+            name="artistName"
+            value={this.state.searchQuery}
+            onChange={this.onSearchQueryChanged}
+          />
+          </div>
+          <button
+            disabled={!this.isSearchButtonActive}
+            onClick={this.onSearchButtonClicked}
+            className="btn btn-lg mb-5"
+            >Search</button>
+          <button
+            onClick={this.onClearSearchButtonClicked}
+            className="btn btn-lg mb-5"
+            >Clear</button>
         </div>
       </div>
     );

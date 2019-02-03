@@ -10,10 +10,10 @@ export const fetchArtist = ()=> {
     .catch(console.error)
 };
 
-export const searchArtist = ()=> {
-  return axios.get('/search')
+export const searchArtist = (searchQuery)=> {
+  return axios.get(`/search/music/artist/${searchQuery}`)
     .then( (response)=> {
-      const search = response.data.artist;
+      const search = response.data.search;
       console.log(search);
       return search
     })

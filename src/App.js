@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './index.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar'
-import Index from'./components/Layout/Index'
+import SearchPage from'./components/Layout/SearchPage'
 import ListUserFav from'./components/Layout/ListUserFav'
 import SignIn from './components/Users/signIn'
 import SignUp from './components/Users/signUp'
@@ -20,7 +20,7 @@ class App extends Component {
               <Switch>
                 <Route path='/signin' component={SignIn} />
                 <Route path='/signup' component={SignUp} />
-                <Route exact path="/" component={Index} />
+                <Route exact path="/" component={SearchPage} />
                 <Route exact path="/fav_list" component={ListUserFav} />
               </Switch>
             </div>
