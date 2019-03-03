@@ -7,18 +7,15 @@ class SearchBox extends Component {
     onSearchSubmit: PropTypes.func.isRequired,
     onClearSearchSubmit: PropTypes.func.isRequired,
   };
-
   state ={
     searchQuery: '',
   };
 
-  componentDidMount() {
 
-  }
 
   get isSearchButtonActive() {
     const { searchQuery } = this.state;
-    return !!searchQuery;
+    return !!searchQuery;     // why double not instead just searchQuery?
   }
 
   onSearchQueryChanged = (event)=> {
@@ -33,11 +30,10 @@ class SearchBox extends Component {
   };
 
   onSearchButtonClicked = ()=> {
-
     const { onSearchSubmit } = this.props;
     const { searchQuery } = this.state;
 
-    if (!!searchQuery) {
+    if (searchQuery) {
       onSearchSubmit(searchQuery)
     }
   };

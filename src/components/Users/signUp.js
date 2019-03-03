@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+import {registerUser} from "../apiRequests";
+
 
 class SignUp extends Component {
   state = {
     email: '',
     password: '',
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
   }
   handleChange = (e) => {
     this.setState({
@@ -22,20 +24,20 @@ class SignUp extends Component {
         <form className="cyan lighten-5" onSubmit={this.handleSubmit}>
           <h5 className="grey-text text-green darken-1">Sign Up</h5>
           <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id='email' onChange={this.handleChange} />
+            <label htmlFor="firstName">First Name</label>
+            <input type="text" id='first_name' onChange={this.handleChange}/>
+          </div>
+          <div className="input-field">
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text" id='last_name' onChange={this.handleChange}/>
           </div>
           <div className="input-field">
             <label htmlFor="password">Password</label>
             <input type="password" id='password' onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" id='firstName' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" id='lastName' onChange={this.handleChange} />
+            <label htmlFor="email">Email</label>
+            <input type="email" id='email' onChange={this.handleChange}/>
           </div>
           <div className="input-field">
             <button className="btn green darken-1 z-depth-0">Sign Up</button>

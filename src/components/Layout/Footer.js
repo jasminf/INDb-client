@@ -1,21 +1,22 @@
 import React from "react";
 
+
 const Footer = () => {
   return (
     <footer>
       <div className="footer-copyright">
         <div className="container">
-          © 2018 Copyright Jasmin Farhi
-          <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+          <div className="row">
+          © 2018 Jasmin Farhi
+          <a className="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/jasmin-farhi/">Linkedin</a>
         </div>
+      </div>
       </div>
     </footer>
   )
 };
 
 export default Footer;
-
-
 
 
 

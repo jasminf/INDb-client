@@ -3,7 +3,7 @@ import './index.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar'
 import SearchPage from'./components/Layout/SearchPage'
-import ListUserFav from'./components/Layout/ListUserFav'
+import ListUserFav from'./components/Favorites/ListUserFav'
 import SignIn from './components/Users/signIn'
 import SignUp from './components/Users/signUp'
 

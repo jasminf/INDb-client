@@ -1,15 +1,5 @@
 import axios from "axios";
 
-export const fetchArtist = ()=> {
-  return axios.get('/main/artist')
-    .then( (response)=> {
-      const artist = response.data.artist;
-      console.log('loaded artist', artist);
-      return artist
-    })
-    .catch(console.error)
-};
-
 export const searchArtist = (searchQuery)=> {
   return axios.get(`/search/music/artist/${searchQuery}`)
     .then( (response)=> {
@@ -18,40 +8,38 @@ export const searchArtist = (searchQuery)=> {
       return search
     })
     .catch(console.error)
-
 };
 
-export const queryResult = ()=> {
-  return axios.get('/search/artists')
+export const searchComics = (searchQuery)=> {
+  return axios.get(`/search/marvel/comics/${searchQuery}`)
     .then( (response)=> {
-      const query = response.data.artist;
-      console.log('loaded query', query);
-      return query
+      const search = response.data.search;
+      console.log(search);
+      return search
     })
     .catch(console.error)
 };
 
-
-export const musicGenre = ()=> {
-  return axios.get('/genre')
-    .then((response) => {
-      const query = response.data;
-      console.log('loaded query', query);
-      return query
+export const saveArtistFav = (deezerArtistId)=> {
+  return axios.post(`/favorites/save/artist/`,{deezerArtistId})
+    .then( (response)=> {
+      const favorite = response.data.favorite;
+      console.log(favorite);
+      return favorite
     })
     .catch(console.error)
 };
 
-
-export const fakeFav = ()=> {
-  return axios.get('/comics/view_all')
-    .then((response) => {
-      const query = response.data;
-      console.log('loaded query', query);
-      return query
+export const registerUser = (first_name, last_name, password, email)=> {
+  return axios.post(`/register/`,{first_name, last_name, password, email})
+    .then( (response)=> {
+      const user = response.data.user;
+      console.log(user);
+      return user
     })
     .catch(console.error)
 };
+
 
 
 const marvelApiKey = `4e9f1ac102d21e2544e249194d8d04aa&hash=74907e55eb15635a25c8beb9aa629e70`;

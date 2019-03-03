@@ -1,5 +1,5 @@
 import React from 'react';
-import UserFav from "../Favorites/UserFav";
+import UserFav from "./UserFav";
 
 
 const ListUserFav = () => {
